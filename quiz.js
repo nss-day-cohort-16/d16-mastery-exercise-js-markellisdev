@@ -16,27 +16,36 @@ var tree = {
 	character: userChar
 };
 
-function grow(input) {
-	// body... call variables inside
+function growTree(height, char) {
+	// body... call variables inside so they don't come up as undefined
 }
 
-var height = document.getElementById(userHeight).value;
 
-var char = document.getElementById(userChar).value;
 
-var tree = document.getElementById(growTree);
+var tree = document.getElementById(yourTree);
 
 
 
-console.log("height", userHeight);
 
-
+function checkInput(yes) {
+	var height = document.getElementById("userHeight").value;
+	var char = document.getElementById("userChar").value;
+	if (userHeight && userChar) {
+		growTree(height, char);
+	}
+	else {
+		alert("Please make sure you enter a number for height and a character before trying to grow your tree");
+	}
+	console.log("height", height);
+}
 
 
 
 // Once the user enters in a number, and a character, the user can either then just press the enter key (as long as the cursor is in one of the input fields), or click a button that is labeled "Grow your tree" and the tree should be shown in the console. This requires you to add an event listener to the button, as well as an event listener for the enter/return key.
 
-// document.getElementById(userHeight).addEventListener("click", )
+userHeight.addEventListener("keyup", checkInput);
+
+userChar.addEventListener("keyup", checkInput);
 
 
 
