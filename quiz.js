@@ -16,6 +16,7 @@ var tree = {
 	character: userChar
 };
 
+
 // function growTree(height, char) {
 // 	// body... call variables inside so they don't come up as undefined
 // }
@@ -37,14 +38,15 @@ function checkInput(yes) {
 	else {
 		growTree(height, char);
 	}
-	console.log("height", height);
 }
 
 
 function growTree(height, char) {
-	var numSpaces = " ";
-	for (i=0; i <= height; i++) {
-		console.log((numSpaces * (height - 1))  + char[i] + numSpaces);
+
+	var space = (" ");
+
+	for (i = 1; i <= height; i++) {
+		console.log("test", space.repeat(height-i) + char.repeat((i*2)-1));
 	}
 }
 
@@ -54,6 +56,11 @@ function growTree(height, char) {
 
 
 treeButton.addEventListener("click", checkInput);
+
+userChar.addEventListener("submit", checkInput);
+
+userHeight.addEventListener("submit", checkInput);
+
 
 
 
