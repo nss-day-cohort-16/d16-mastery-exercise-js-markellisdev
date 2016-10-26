@@ -16,13 +16,13 @@ var tree = {
 	character: userChar
 };
 
-function growTree(height, char) {
-	// body... call variables inside so they don't come up as undefined
-}
+// function growTree(height, char) {
+// 	// body... call variables inside so they don't come up as undefined
+// }
 
 
 
-var tree = document.getElementById(yourTree);
+var treeButton = document.getElementById("yourTree");
 
 
 
@@ -30,27 +30,32 @@ var tree = document.getElementById(yourTree);
 function checkInput(yes) {
 	var height = document.getElementById("userHeight").value;
 	var char = document.getElementById("userChar").value;
-	if (userHeight && userChar) {
-		growTree(height, char);
+	if (isNaN(height)  || (char.length > 1 || char.length < 1)) {
+	alert("Please make sure you enter a number for height and a character before trying to grow your tree");
+// If either of the input fields does not have a value in it when the user presses the enter key, or presses the button, then display an alert stating that both fields must have a value.
 	}
 	else {
-		alert("Please make sure you enter a number for height and a character before trying to grow your tree");
+		growTree(height, char);
 	}
 	console.log("height", height);
+}
+
+
+function growTree(height, char) {
+	var numSpaces = " ";
+	for (i=0; i <= height; i++) {
+		console.log((numSpaces * (height - 1))  + char[i] + numSpaces);
+	}
 }
 
 
 
 // Once the user enters in a number, and a character, the user can either then just press the enter key (as long as the cursor is in one of the input fields), or click a button that is labeled "Grow your tree" and the tree should be shown in the console. This requires you to add an event listener to the button, as well as an event listener for the enter/return key.
 
-userHeight.addEventListener("keyup", checkInput);
 
-userChar.addEventListener("keyup", checkInput);
-
+treeButton.addEventListener("click", checkInput);
 
 
-
-// If either of the input fields does not have a value in it when the user presses the enter key, or presses the button, then display an alert stating that both fields must have a value.
 
 
 
