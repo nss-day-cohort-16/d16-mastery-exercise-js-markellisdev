@@ -1,6 +1,5 @@
 // Create a tree function that should build a pine tree out of a character in the Chrome dev tools console.
 
-// It accepts a single object as an argument. The object should have two key/value pairs.
 
 // A key that specifies the height of the pine tree.
 
@@ -10,66 +9,53 @@
 
 // The character to use should be from user input in a <input type="text"> field in the DOM.
 
+// It accepts a single object as an argument. The object should have two key/value pairs.
 
 var tree = {
 	height: userHeight,
 	character: userChar
 };
 
-
-// function growTree(height, char) {
-// 	// body... call variables inside so they don't come up as undefined
-// }
-
-
-
 var treeButton = document.getElementById("yourTree");
 
+//This function is for the Enter button
 
+function enterInput(event) {
+	if (event.keyCode === 13) {
+		checkInput(true);
+	}
+};
 
+// If either of the input fields does not have a value in it when the user presses the enter key, or presses the button, then display an alert stating that both fields must have a value.
 
 function checkInput(yes) {
-	var height = document.getElementById("userHeight").value;
-	var char = document.getElementById("userChar").value;
-	if (isNaN(height)  || (char.length > 1 || char.length < 1)) {
+	tree.height = document.getElementById("userHeight").value;
+	tree.character = document.getElementById("userChar").value;
+	if (isNaN(tree.height)  || (tree.character.length > 1 || tree.character.length < 1)) {
 	alert("Please make sure you enter a number for height and a character before trying to grow your tree");
-// If either of the input fields does not have a value in it when the user presses the enter key, or presses the button, then display an alert stating that both fields must have a value.
 	}
 	else {
-		growTree(height, char);
+		growTree(tree);
 	}
-}
+};
 
+//This is the function to grow the tree.
 
-function growTree(height, char) {
+function growTree(tree) {
 
 	var space = (" ");
 
-	for (i = 1; i <= height; i++) {
-		console.log("test", space.repeat(height-i) + char.repeat((i*2)-1));
+	for (i = 1; i <= tree.height; i++) {
+		console.log("test", space.repeat(tree.height-i) + tree.character.repeat((i*2)-1));
 	}
-}
+};
 
-
-
-// Once the user enters in a number, and a character, the user can either then just press the enter key (as long as the cursor is in one of the input fields), or click a button that is labeled "Grow your tree" and the tree should be shown in the console. This requires you to add an event listener to the button, as well as an event listener for the enter/return key.
-
+// click a button that is labeled "Grow your tree" and the tree should be shown in the console. This requires you to add an event listener to the button
 
 treeButton.addEventListener("click", checkInput);
 
-userChar.addEventListener("submit", checkInput);
+// Event listeners for Enter keypress
 
-userHeight.addEventListener("submit", checkInput);
+userChar.addEventListener("keypress", enterInput);
 
-
-
-
-
-
-
-
-// Grow your tree
-
-// Example
-
-// Here's what the pine tree should look like when you specify a height of 7, and use the asterisk character.
+userHeight.addEventListener("keypress", enterInput);
