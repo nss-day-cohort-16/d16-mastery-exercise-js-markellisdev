@@ -11,10 +11,7 @@
 
 // It accepts a single object as an argument. The object should have two key/value pairs.
 
-var tree = {
-	height: userHeight,
-	character: userChar
-};
+var tree = {};
 
 var treeButton = document.getElementById("yourTree");
 
@@ -22,13 +19,13 @@ var treeButton = document.getElementById("yourTree");
 
 function enterInput(event) {
 	if (event.keyCode === 13) {
-		checkInput(true);
+		checkInput();
 	}
-};
+}
 
 // If either of the input fields does not have a value in it when the user presses the enter key, or presses the button, then display an alert stating that both fields must have a value.
 
-function checkInput(yes) {
+function checkInput() {
 	tree.height = document.getElementById("userHeight").value;
 	tree.character = document.getElementById("userChar").value;
 	if (isNaN(tree.height)  || (tree.character.length > 1 || tree.character.length < 1)) {
@@ -37,7 +34,7 @@ function checkInput(yes) {
 	else {
 		growTree(tree);
 	}
-};
+}
 
 //This is the function to grow the tree.
 
@@ -48,7 +45,7 @@ function growTree(tree) {
 	for (i = 1; i <= tree.height; i++) {
 		console.log("test", space.repeat(tree.height-i) + tree.character.repeat((i*2)-1));
 	}
-};
+}
 
 // click a button that is labeled "Grow your tree" and the tree should be shown in the console. This requires you to add an event listener to the button
 
